@@ -31,7 +31,7 @@ app.get('/add-route', function(req, res) {
 });
 
 app.get('/get-html', function(req, res) {
-	var folder = '/nodejs/aroute/public/';
+	var folder = __dirname + '/public/';
 	var temp = [];
 	fs.readdir(folder, (err, files) => {
 		files.forEach(file => {
