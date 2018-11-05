@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+		<script type="text/javascript" src="/js/jquery.js"></script>
+	 	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	 	<script type="text/javascript" src="/js/script.js"></script>
+		<title>AROUTE</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+	  		<div class="container-fluid">
+		    	<div class="navbar-header">
+		      		<a class="navbar-brand" href="/index.html">AROUTE</a>
+		    	</div>
+		  	</div>
+		</nav>
+		<div class="container">
+			<img src="/img/kuda.jpg">
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.get('/get-html', {}, function(data) {
+					$('#target').append("<option value='"+data+"'>"+data+"</option>");
+				});
+			});
+			$('#btn-route').click(function() {
+				var route = '/' + $('#route').val();
+				var action = $('#action').val();
+				var target = '/' + $('#target').val();
+				$('/add-route', {qRoute: route, qAction: action, qTarget: target}, function(data) {
+					alert(data);
+				});
+			});
+		</script>
+	</body>
+</html>
